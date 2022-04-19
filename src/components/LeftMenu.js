@@ -14,7 +14,7 @@ function LeftMenu() {
     <div className='leftMenu'>
         <div className='logoContainer'>
             <i><FaSpotify /></i>
-            <h2 >S</h2>
+            <h2 >Spotify</h2>
             <i><FaEllipsisH /></i>
         </div>
         <div className='searchBox'>
