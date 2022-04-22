@@ -1,20 +1,41 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaHeadphones, FaHeart, FaRegClock, FaRegHeart } from 'react-icons/fa'
+import { MusicPlayer } from './MusicPlayer';
 import {Songs} from "./Songs"
 
 function AudioList() {
+
+    const [songs,setSongs] = useState(Songs);
 
     const [song,setSong] = useState(Songs[0].song);
 
     const [img,setImage] = useState(Songs[0].imgSrc);
 
-    const changeFavourite=(id)=>{
-        Songs.forEach((song)=>{
-            if(song.id == id){
+    useEffect(() => {
+        const songs = document.querySelectorAll(".songs");
+    
+        function changeMenuActive(){
+          songs.forEach(n=>n.classList.remove("active"));
+          this.classList.add("active"); 
+        }
+    
+        songs.forEach(n => n.addEventListener("click",changeMenuActive));
+      },[])
+
+    const changeFavourite = (id) =>{
+        Songs.forEach(song =>{
+            if(song.id === id){
                 song.favourite = !song.favourite;
             }
         });
+
+        setSongs([...songs]); 
     };
+
+    const setMainSong = (songSrc,imgSrc) =>{
+        setSong(songSrc);
+        setImage(imgSrc);
+    }
   return (
     <div className="audioList">
         <h2 className='title'>
@@ -25,14 +46,17 @@ function AudioList() {
         <div className='songsContainer'>
          
             {
-                Songs && Songs.map((song,index) => (
+                songs && songs.map((song,index) => (
                 
-            <div className='songs' key={song?.id}>
-                <div className='connt'>{`#${index+1}`}</div>
+            <div className='songs' 
+                key={song?.id}
+                onClick={()=> setMainSong(song?.song,song?.imgSrc)}
+            >
+                <div className='count'>{`#${index+1}`}</div>
                 <div className='song'>
 
                     <div className='imgBox'>
-                        <img src={song?.imgSrc} alt=''></img>
+                        <img src={song?.imgSrc} alt='' />
                      </div>
 
                     <div className='section'>
@@ -70,11 +94,10 @@ function AudioList() {
                     </div>
                 </div>
             </div>
-                ))
-            }
-          
-            
+        ))}
         </div>
+
+        <MusicPlayer song={song} imgSrc={img} />
     </div>
   )
 }
