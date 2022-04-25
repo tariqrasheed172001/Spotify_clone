@@ -290,6 +290,7 @@
     .leftMenu{
         width: 64px;
         min-width: 64px;
+        margin-left: -61px;
     }
     .leftMenu .searchBox{
         display: none;
