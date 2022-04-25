@@ -13,7 +13,7 @@ const Songs = [
     favourite: false,
     songName: "AADAT REMIX",
     artist: "Atif Aslam",
-    song: "https://firebasestorage.googleapis.com/v0/b/spotifyclone-5c668.appspot.com/o/songs%2FAADAT%20REMIX.mp3?alt=media&token=b925fa0e-f566-4049-b875-2dbc2015dc87",
+    song: "https://firebasestorage.googleapis.com/v0/b/spotifyclone-5c668.appspot.com/o/songs%2FAADAT%20REMIX.mp3?alt=media&token=b925fa0e-f566-4049-b875-2dbc2015dc8721",
     imgSrc:
       "https://firebasestorage.googleapis.com/v0/b/spotifyclone-5c668.appspot.com/o/images%2Fadat.jpg?alt=media&token=2baee6c1-b598-462e-9a98-5aa4ca4d36be",
   },
